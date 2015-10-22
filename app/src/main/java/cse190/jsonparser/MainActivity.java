@@ -9,11 +9,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,6 +89,33 @@ public class MainActivity extends AppCompatActivity {
          *********************************************************************/
         requestQueue = Volley.newRequestQueue(this); // Parameter for
         requestQueue.add(jsonRequest);               // newRequestQueue is a Context
+
+        /**********************************************************************
+         * POST Request Structure:
+         *
+         * JSONObject objectToPost = new JSONObject();
+         * JsonObjectRequest postRequest = new JsonObjectRequest
+         *  (Request.Method.POST, URL, objectToPost,
+         *  new Response.Listener<JSONObject>() {
+         *      @Override
+         *      public void onResponse(JSONObject response) {
+         *          // Parse response from POST Call
+         *      }
+         *  }, new Response.ErrorListener() {
+         *      @Override
+         *      public void onErrorResponse(VolleyError error) {
+         *          // Handle Errors
+         *      }
+         *  }) {
+         *      @Override
+         *      protected Map<String, String> getParams() {
+         *          Map<String, String>  params = new HashMap<>();
+         *          // Insert Post parameters in params
+         *          return params;
+         *      }
+         * };
+         * ADD TO THE QUEUE
+         *********************************************************************/
     }
 
     @Override
